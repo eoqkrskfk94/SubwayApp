@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
     id 'com.google.gms.google-services'
 }
 
@@ -57,10 +58,16 @@ dependencies {
 
     // Coroutine
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.4.3"
 
     // Koin
     implementation 'org.koin:koin-core:2.2.2'
     implementation 'org.koin:koin-android-scope:2.2.2'
     implementation 'org.koin:koin-android-ext:2.2.2'
     implementation 'org.koin:koin-androidx-fragment:2.2.2'
+
+    // Jetpack Room
+    implementation 'androidx.room:room-runtime:2.3.0'
+    implementation 'androidx.room:room-ktx:2.3.0'
+    kapt 'androidx.room:room-compiler:2.3.0'
 }
