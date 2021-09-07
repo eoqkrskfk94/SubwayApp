@@ -2,6 +2,7 @@ package com.mj.subwayapp.data.db
 
 import androidx.room.*
 import com.mj.subwayapp.data.db.entity.StationEntity
+import com.mj.subwayapp.data.db.entity.StationSubwayCrossRefEntity
 import com.mj.subwayapp.data.db.entity.StationWithSubwaysEntity
 import com.mj.subwayapp.data.db.entity.SubwayEntity
 import kotlinx.coroutines.flow.Flow
@@ -20,6 +21,6 @@ interface StationDao {
     suspend fun insertSubways(subways: List<SubwayEntity>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertCrossReferences(reference: List<StationWithSubwaysEntity>)
+    suspend fun insertCrossReferences(reference: List<StationSubwayCrossRefEntity>)
 
 }
