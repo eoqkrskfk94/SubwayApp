@@ -1,4 +1,4 @@
-package com.mj.subwayapp.presenter
+package com.mj.subwayapp.presentation
 
 import androidx.annotation.CallSuper
 import kotlinx.coroutines.CoroutineScope

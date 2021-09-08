@@ -10,6 +10,9 @@ import com.mj.subwayapp.data.preference.PreferenceManager
 import com.mj.subwayapp.data.preference.SharedPreferenceManager
 import com.mj.subwayapp.data.repository.StationRepository
 import com.mj.subwayapp.data.repository.StationRepositoryImpl
+import com.mj.subwayapp.presentation.stations.StationsContract
+import com.mj.subwayapp.presentation.stations.StationsFragment
+import com.mj.subwayapp.presentation.stations.StationsPresenter
 import kotlinx.coroutines.Dispatchers
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
@@ -32,5 +35,10 @@ val appModule = module {
 
     //Repository
     single<StationRepository> { StationRepositoryImpl(get(), get(), get(), get())}
+
+    //Presentation
+    scope<StationsFragment> {
+        scoped<StationsContract.Presenter> { StationsPresenter(getSource(), get()) }
+    }
 
 }

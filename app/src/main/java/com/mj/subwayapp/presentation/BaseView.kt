@@ -1,4 +1,4 @@
-package com.mj.subwayapp.presenter
+package com.mj.subwayapp.presentation
 
 interface BaseView<PresenterT: BasePresenter> {
 
