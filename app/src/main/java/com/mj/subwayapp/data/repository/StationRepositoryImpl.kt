@@ -1,6 +1,7 @@
 package com.mj.subwayapp.data.repository
 
 import com.mj.subwayapp.data.api.StationApi
+import com.mj.subwayapp.data.api.StationArrivalsApi
 import com.mj.subwayapp.data.db.StationDao
 import com.mj.subwayapp.data.db.entity.StationSubwayCrossRefEntity
 import com.mj.subwayapp.data.db.entity.mapper.toStations
@@ -14,6 +15,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
 class StationRepositoryImpl(
+    private val stationArrivalsApi: StationArrivalsApi,
     private val stationApi: StationApi,
     private val stationDao: StationDao,
     private val preferenceManager: PreferenceManager,
