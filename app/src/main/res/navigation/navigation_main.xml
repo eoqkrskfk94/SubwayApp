@@ -22,5 +22,12 @@
         android:id="@+id/station_arrivals_dest"
         android:name="com.mj.subwayapp.presentation.stationArrivals.StationArrivalsFragment"
         android:label="fragment_station_arrivals"
-        tools:layout="@layout/fragment_station_arrivals" />
+        tools:layout="@layout/fragment_station_arrivals" >
+
+        <argument
+            android:name="station"
+            app:argType="com.mj.subwayapp.domain.Station"/>
+
+
+    </fragment>
 </navigation>

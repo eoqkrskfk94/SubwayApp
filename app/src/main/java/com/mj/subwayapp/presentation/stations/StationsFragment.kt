@@ -1,11 +1,15 @@
 package com.mj.subwayapp.presentation.stations
 
+import android.app.Activity
+import android.hardware.input.InputManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,6 +44,7 @@ class StationsFragment : ScopeFragment(), StationsContract.View {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        hideKeyboard()
         presenter.onDestroyView()
     }
 
@@ -78,10 +83,19 @@ class StationsFragment : ScopeFragment(), StationsContract.View {
         }
 
         (binding?.recyclerView?.adapter as? StationsAdapter)?.apply {
-            onItemClickListener = {station -> }
+            onItemClickListener = {station ->
+                val action = StationsFragmentDirections.actionStationsFragmentToStationArrivalsFragment(station)
+                findNavController().navigate(action)
+            }
             onFavoriteClickListener = { station -> }
         }
     }
+
+    private fun hideKeyboard() {
+        val inputMethodManager =context?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(activity?.currentFocus?.windowToken, 0)
+    }
+
 
 
 
