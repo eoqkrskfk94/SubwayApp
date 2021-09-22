@@ -13,6 +13,9 @@ import com.mj.subwayapp.data.preference.PreferenceManager
 import com.mj.subwayapp.data.preference.SharedPreferenceManager
 import com.mj.subwayapp.data.repository.StationRepository
 import com.mj.subwayapp.data.repository.StationRepositoryImpl
+import com.mj.subwayapp.presentation.stationArrivals.StationArrivalsContract
+import com.mj.subwayapp.presentation.stationArrivals.StationArrivalsFragment
+import com.mj.subwayapp.presentation.stationArrivals.StationArrivalsPresenter
 import com.mj.subwayapp.presentation.stations.StationsContract
 import com.mj.subwayapp.presentation.stations.StationsFragment
 import com.mj.subwayapp.presentation.stations.StationsPresenter
@@ -44,6 +47,10 @@ val appModule = module {
     //Presentation
     scope<StationsFragment> {
         scoped<StationsContract.Presenter> { StationsPresenter(getSource(), get()) }
+    }
+
+    scope<StationArrivalsFragment> {
+        scoped<StationArrivalsContract.Presenter> { StationArrivalsPresenter(getSource(), get(), get()) }
     }
 
     //Api

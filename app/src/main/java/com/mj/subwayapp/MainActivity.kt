@@ -8,6 +8,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.mj.subwayapp.databinding.ActivityMainBinding
 import com.mj.subwayapp.extension.toGone
 import com.mj.subwayapp.extension.toVisible
+import com.mj.subwayapp.presentation.stationArrivals.StationArrivalsFragmentArgs
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,8 +39,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun bindViews() {
-        navigationController.addOnDestinationChangedListener { _, destination, _ ->
+        navigationController.addOnDestinationChangedListener { _, destination, argument ->
             if(destination.id == R.id.station_arrivals_dest) {
+                title = StationArrivalsFragmentArgs.fromBundle(argument!!).station.name
                 binding.toolbar.toVisible()
             } else {
                 binding.toolbar.toGone()

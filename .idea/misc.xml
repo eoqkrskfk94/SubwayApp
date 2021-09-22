@@ -6,8 +6,11 @@
         <entry key="app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.6072916666666667" />
         <entry key="app/src/main/res/drawable/selector_favorite_checkbox.xml" value="0.6072916666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.5911458333333334" />
+        <entry key="app/src/main/res/layout/fragment_station_arrivals.xml" value="0.5765625" />
         <entry key="app/src/main/res/layout/fragment_stations.xml" value="0.5911458333333334" />
+        <entry key="app/src/main/res/layout/item_arrival.xml" value="0.5765625" />
         <entry key="app/src/main/res/layout/item_station.xml" value="0.5911458333333334" />
+        <entry key="app/src/main/res/menu/menu_station_arrivals.xml" value="0.5765625" />
       </map>
     </option>
   </component>
