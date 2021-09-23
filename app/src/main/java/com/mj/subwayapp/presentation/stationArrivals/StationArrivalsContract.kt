@@ -21,5 +21,7 @@ interface StationArrivalsContract {
 
         fun fetchStationArrivals()
 
+        fun toggleStationFavorite()
+
     }
 }

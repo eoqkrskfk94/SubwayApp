@@ -5,6 +5,7 @@ import com.mj.subwayapp.data.api.StationArrivalsApi
 import com.mj.subwayapp.data.api.response.mapper.toArrivalInformation
 import com.mj.subwayapp.data.db.StationDao
 import com.mj.subwayapp.data.db.entity.StationSubwayCrossRefEntity
+import com.mj.subwayapp.data.db.entity.mapper.toStationEntity
 import com.mj.subwayapp.data.db.entity.mapper.toStations
 import com.mj.subwayapp.data.preference.PreferenceManager
 import com.mj.subwayapp.domain.ArrivalInformation
@@ -28,7 +29,7 @@ class StationRepositoryImpl(
     override val stations: Flow<List<Station>> =
         stationDao.getStationWithSubways()
             .distinctUntilChanged()
-            .map { it.toStations() }
+            .map { station ->  station.toStations().sortedByDescending { it.isFavorite } }
             .flowOn(dispatcher)
 
     override suspend fun refreshStations() = withContext(dispatcher) {
@@ -50,6 +51,10 @@ class StationRepositoryImpl(
             ?.distinctBy { it.direction }
             ?.sortedBy { it.subway }
             ?: throw RuntimeException("도착 정보를 불러오는 데에 실패했습니다.")
+    }
+
+    override suspend fun updateStation(station: Station) = withContext(dispatcher) {
+        stationDao.updateStation(station.toStationEntity())
     }
 
     companion object {

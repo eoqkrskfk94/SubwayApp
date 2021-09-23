@@ -87,7 +87,9 @@ class StationsFragment : ScopeFragment(), StationsContract.View {
                 val action = StationsFragmentDirections.actionStationsFragmentToStationArrivalsFragment(station)
                 findNavController().navigate(action)
             }
-            onFavoriteClickListener = { station -> }
+            onFavoriteClickListener = { station ->
+                presenter.toggleStationFavorite(station)
+            }
         }
     }
 

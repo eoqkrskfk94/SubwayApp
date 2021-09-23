@@ -1,5 +1,6 @@
 package com.mj.subwayapp.data.db.entity.mapper
 
+import com.mj.subwayapp.data.db.entity.StationEntity
 import com.mj.subwayapp.data.db.entity.StationWithSubwaysEntity
 import com.mj.subwayapp.data.db.entity.SubwayEntity
 import com.mj.subwayapp.domain.Station
@@ -10,6 +11,12 @@ fun StationWithSubwaysEntity.toStation() = Station(
     isFavorite = station.isFavorite,
     connectedSubways = subways.toSubways()
 )
+
+fun Station.toStationEntity() =
+    StationEntity(
+        stationName = name,
+        isFavorite = isFavorite
+    )
 
 fun List<StationWithSubwaysEntity>.toStations() = map { it.toStation() }
 

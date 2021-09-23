@@ -37,4 +37,7 @@ interface StationDao {
         )
     }
 
+    @Update
+    suspend fun updateStation(station: StationEntity)
+
 }

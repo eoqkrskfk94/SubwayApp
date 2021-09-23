@@ -78,6 +78,7 @@ class StationArrivalsFragment : ScopeFragment(), StationArrivalsContract.View {
                         R.drawable.ic_star_empty
                     }
                 )
+                presenter.toggleStationFavorite()
                 true
             }
             else -> super.onOptionsItemSelected(item)
